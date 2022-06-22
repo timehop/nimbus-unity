@@ -9,13 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import androidx.appcompat.content.res.AppCompatResources;
+
 import com.adsbynimbus.NimbusAdManager;
 import com.adsbynimbus.NimbusError;
-import com.adsbynimbus.openrtb.request.App;
 import com.adsbynimbus.openrtb.response.BidResponse;
-import com.adsbynimbus.openrtb.request.Format;
-import com.adsbynimbus.openrtb.request.Position;
-import com.adsbynimbus.openrtb.request.User;
 import com.adsbynimbus.render.AdController;
 import com.adsbynimbus.render.AdEvent;
 import com.adsbynimbus.render.BlockingAdRenderer;
@@ -23,9 +21,6 @@ import com.adsbynimbus.render.CompanionAd;
 import com.adsbynimbus.render.Renderer;
 import com.adsbynimbus.request.NimbusRequest;
 import com.adsbynimbus.request.NimbusResponse;
-import com.adsbynimbus.request.RequestManager;
-
-import java.util.HashMap;
 
 public final class UnityHelper {
     static final NimbusAdManager manager = new NimbusAdManager();
@@ -33,6 +28,8 @@ public final class UnityHelper {
     public static void render(Object obj, String jsonResponse, boolean isBlocking, int closeButtonDelay, Object listener) {
         if (obj instanceof Activity) {
             final Activity activity = (Activity) obj;
+            BlockingAdRenderer.setMuteButton(AppCompatResources.getDrawable(activity,
+                    android.R.drawable.stat_notify_call_mute));
             final NimbusResponse nimbusResponse = new NimbusResponse(BidResponse.fromJson(jsonResponse));
             if (isBlocking) {
                 nimbusResponse.companionAds = new CompanionAd[]{activity.getResources().getConfiguration().orientation ==
