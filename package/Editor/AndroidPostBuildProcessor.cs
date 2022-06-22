@@ -23,8 +23,9 @@ allprojects {
 	}
 }";
 		private static string dependencies = @"dependencies {
-	implementation ""com.adsbynimbus.android:nimbus:1.11.4""
-	implementation ""com.adsbynimbus.android:extension-okhttp:1.11.4""
+	implementation ""com.adsbynimbus.android:nimbus:1.11.5""
+	implementation ""com.adsbynimbus.android:extension-okhttp:1.11.5""
+	implementation ""com.adsbynimbus.android:extension-exoplayer:1.11.5""
 	implementation ""com.adsbynimbus.openrtb:kotlin-android:0.9.0""
 	implementation ""androidx.core:core:1.5.0""
 }";
